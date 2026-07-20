@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CELA VI — Cardápio Digital
+   Tema: escuro premium com dourado / champanhe
+   ============================================================ */
+
+@theme {
+  /* Superfícies */
+  --color-ink: #0a0a0c;
+  --color-ink-soft: #101014;
+  --color-surface: #17171c;
+  --color-surface-2: #1f1f26;
+  --color-surface-3: #26262f;
+  --color-line: #2c2c36;
+
+  /* Dourado / champanhe */
+  --color-gold: #d4af37;
+  --color-gold-light: #f0d788;
+  --color-gold-deep: #b8912e;
+  --color-champagne: #e8dcc0;
+
+  /* Texto */
+  --color-cream: #f6f3ea;
+  --color-muted: #a1a1ac;
+  --color-faint: #6c6c78;
+
+  /* Estados */
+  --color-success: #4ade80;
+  --color-danger: #f87171;
+
+  /* Tipografia */
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  /* Raios e sombras */
+  --radius-xl: 1.25rem;
+  --shadow-gold: 0 8px 30px -8px rgba(212, 175, 55, 0.35);
+
+  /* Animações */
+  --animate-fade-in: fade-in 0.4s ease forwards;
+  --animate-scale-in: scale-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-in-right: slide-in-right 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-shimmer: shimmer 1.5s infinite linear;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(212, 175, 55, 0.08), transparent 60%),
+    var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-3) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-surface-3);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-deep);
+}
+
+/* ============================================================
+   Utilitários
+   ============================================================ */
+
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold) 45%, var(--color-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold) 55%, var(--color-gold-deep));
+  }
+
+  .border-gold-soft {
+    border-color: rgba(212, 175, 55, 0.28);
+  }
+
+  .glass {
+    background: rgba(23, 23, 28, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .card-surface {
+    background: linear-gradient(180deg, var(--color-surface), var(--color-ink-soft));
+    border: 1px solid var(--color-line);
+  }
+
+  .hairline {
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-surface) 25%,
+      var(--color-surface-2) 37%,
+      var(--color-surface) 63%
+    );
+    background-size: 800px 100%;
+    animation: var(--animate-shimmer);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .tap-highlight:active { transform: scale(0.97); }
+}

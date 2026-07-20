@@ -73,6 +73,7 @@ const messages = {
     adjustSearch: "Tente ajustar a sua pesquisa.",
     footerCopyright: "Cardápio Digital",
     location: "Beira, Moçambique",
+    developedBy: "Desenvolvido por",
     language: "Idioma",
   },
   en: {
@@ -131,6 +132,7 @@ const messages = {
     adjustSearch: "Try adjusting your search.",
     footerCopyright: "Digital Menu",
     location: "Beira, Mozambique",
+    developedBy: "Developed by",
     language: "Language",
   },
 } as const;
